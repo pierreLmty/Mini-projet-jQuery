@@ -62,13 +62,14 @@ $(document).ready(function()
 	{
 		var modal = $("#modal");
 		modal.html('<span id="modal-close">&#215;</span><h1>' + texte + '</h1>');
+	
+		$("#modal-close").on("click", function()
+		{
+			$("#modal").hide();
+			$('#modalbg').hide();
+		});
+	
 		modal.show();
 		$('#modalbg').show();
 	}
-	
-	$('#modal-close').on('click', function()
-	{
-		$(this).parent().hide();
-		$('#modalbg').hide();
-	});
 });

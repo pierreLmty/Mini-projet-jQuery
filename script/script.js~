@@ -50,11 +50,11 @@ $(document).ready(function()
 				   	});
 			   	}
 			   	else
-			   		alert("Pas de résultat pour cette recherche");
+			   		afficherModal("Pas de résultat pour cette recherche");
 			});
 		}
 		else
-			alert("Erreur : nombre de résultats demandé invalide");
+			afficherModal("Erreur : nombre de résultats demandé invalide");
 	});
 	
 	
@@ -62,13 +62,15 @@ $(document).ready(function()
 	{
 		var modal = $("#modal");
 		modal.html('<span id="modal-close">&#215;</span><h1>' + texte + '</h1>');
+	
+		$("#modal-close").on("click", function()
+		{
+			alert("test");
+			$("#modal").hide();
+			$('#modalbg').hide();
+		});
+	
 		modal.show();
 		$('#modalbg').show();
 	}
-	
-	$('#modal-close').on('click', function()
-	{
-		$(this).parent().hide();
-		$('#modalbg').hide();
-	});
 });
