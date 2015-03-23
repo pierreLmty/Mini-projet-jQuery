@@ -1,3 +1,7 @@
+const IMAGES_PAR_PAGE = 5;
+var nbResultats = 0;
+
+
 function afficherModal(texte)
 {
 	var modal = $("#modal");
@@ -11,6 +15,17 @@ function afficherModal(texte)
 
 	modal.show();
 	$('#modalbg').show();
+}
+
+function afficherPage(numPage)
+{
+	for(var i = 0 ; i < nbResultats ; i++)
+	{
+		if(i >= (numPage - 1) * IMAGES_PAR_PAGE && i < ((numPage - 1) * IMAGES_PAR_PAGE) + IMAGES_PAR_PAGE)
+			$("#image" + i).show();
+		else
+			$("#image" + i).hide();
+	}
 }
 
 
@@ -51,7 +66,7 @@ $(document).ready(function()
 		var affichagePhotos = $("#affichage-photos");
 		affichagePhotos.html("");
 		
-		var nbResultats = $("#nb-resultats").val();
+		nbResultats = $("#nb-resultats").val();
 	
 		if(!isNaN(nbResultats) && nbResultats > 0)
 		{
@@ -59,12 +74,37 @@ $(document).ready(function()
 	   		{
 	   			if(data.items.length > 0)
 	   			{
+	   		   		var pages = [];
+	   		   		
 				   	$.each(data.items, function(i, item)
 				   	{
 				   		var detail = "Nom de la photo : " + item.title + "<br/>Date de prise de vue : " + item.date_taken + "<br/>Identifiant du photographe : " + item.author;
 				   		
-					   	affichagePhotos.append('<img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/>');
-					   	if (i == nbResultats-1) return false;
+						affichagePhotos.append('<span id="image' + i + '"><img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/></span>');
+						
+				   		if(i >= IMAGES_PAR_PAGE)
+				   			$("#image" + i).hide();
+					   	
+					   	if(i % IMAGES_PAR_PAGE == 0)
+					   	{
+					   		numPage = (i / IMAGES_PAR_PAGE) + 1;
+					   		pages.push('<a href="#" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
+					   	}
+					   		
+					   	if(i == nbResultats-1)
+					   	{
+					   		affichagePhotos.append("Pages : ");
+					   		
+					   		$.each(pages, function(i)
+					   		{
+					   			affichagePhotos.append(pages[i]);
+					   			
+					   			if(i + 1 < pages.length)
+					   				affichagePhotos.append(" - ");
+					   		});
+					   	
+					   		return false;
+					   	}
 				   	});
 			   	}
 			   	else
