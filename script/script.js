@@ -17,7 +17,8 @@ $(document).ready(function()
 						reponse($.map(villes, function(item)
 						{
 							return {
-								label : item.Ville
+								label : item.Ville,
+								value : item.Ville
 							}
 						}));
 					}
@@ -25,5 +26,20 @@ $(document).ready(function()
 			}
 		},
 		minLength: 3
+	});
+	
+	$("#envoyer").on("click", function()
+	{
+		var affichagePhotos = $("#affichage-photos");
+		affichagePhotos.html("");
+	
+		$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=" + $("#commune").val() + "&tagmode=any&format=json&jsoncallback=?", function(data)
+   		{
+		   	$.each(data.items, function(i, item)
+		   	{
+			   	affichagePhotos.append('<img src="' + item.media.m + '"/><br/>');
+			   	if (i == 6) return false;
+		   	});
+		});
 	});
 });
