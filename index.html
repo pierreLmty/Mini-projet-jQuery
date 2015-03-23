@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<title>Mini projet - programmation web client riche</title>
-		
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.ui/1.11.4/jquery-ui.js"></script>
 		<link rel="Stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" />
@@ -14,8 +13,8 @@
 	<body>
 	
 		<form id="formulaire-recherche">
-			<label for="commune">Entrer le nom d'une commune</label> : <input id="commune" type="text" name="commune"/><br/>
-			<label for="nb-resultats">Nombre de résultats à afficher</label> : <input id="nb-resultats" type="number" name="nb-resultats"/><br/>
+			<input id="commune" type="text" name="commune" placeholder="Entrer le nom d'une commune"/><br/>
+			<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/><br/>
 			<input type="submit"/>
 		</form>
 		
