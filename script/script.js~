@@ -28,18 +28,47 @@ $(document).ready(function()
 		minLength: 3
 	});
 	
-	$("#envoyer").on("click", function()
+	$("#formulaire-recherche").submit(function(event)
 	{
+		event.preventDefault();
+	
 		var affichagePhotos = $("#affichage-photos");
 		affichagePhotos.html("");
+		
+		var nbResultats = $("#nb-resultats").val();
 	
-		$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=" + $("#commune").val + "&tagmode=any&format=json&jsoncallback=?", function(data)
-   		{
-		   	$.each(data.items, function(i, item)
-		   	{
-			   	affichagePhotos.append('<img src="' + item.media.m + '"/><br/>');
-			   	if (i == 6) return false;
-		   	});
-		});
+		if(!isNaN(nbResultats) && nbResultats > 0)
+		{
+			$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=" + $("#commune").val() + "&tagmode=any&format=json&jsoncallback=?", function(data)
+	   		{
+	   			if(data.items.length > 0)
+	   			{
+				   	$.each(data.items, function(i, item)
+				   	{
+					   	affichagePhotos.append('<img src="' + item.media.m + '"/><br/>');
+					   	if (i == nbResultats-1) return false;
+				   	});
+			   	}
+			   	else
+			   		alert("Pas de résultat pour cette recherche");
+			});
+		}
+		else
+			alert("Erreur : nombre de résultats demandé invalide");
+	});
+	
+	
+	function afficherModal(texte)
+	{
+		var modal = $("#modal");
+		modal.html('<span id="modal-close">&#215;</span><h1>' + texte + '</h1>');
+		modal.show();
+		$('#modalbg').show();
+	}
+	
+	$('#modal-close').on('click', function()
+	{
+		$(this).parent().hide();
+		$('#modalbg').hide();
 	});
 });
