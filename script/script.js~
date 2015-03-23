@@ -86,12 +86,13 @@ $(document).ready(function()
 				   		if(i >= IMAGES_PAR_PAGE)
 				   			$("#image" + i).hide();
 					   	
+					   	pages.append("Pages : ");
 					   	if(i % IMAGES_PAR_PAGE == 0)
 					   	{
 					   		numPage = (i / IMAGES_PAR_PAGE) + 1;
 					   		pages.append('<a href="#" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
 					   		
-					   		if(numPage < (i / IMAGES_PAR_PAGE))
+					   		if(numPage < (nbResultats / IMAGES_PAR_PAGE))
 					   			pages.append(" - ");
 					   	}
 					   		

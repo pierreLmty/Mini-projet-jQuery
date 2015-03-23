@@ -2,15 +2,14 @@ body
 {
 	background-color: #FFF;
 	font-family: Arial, Helvetica, sans-serif, bold;
-	margin : auto;
-	padding-top: 30%;
 	
 }
 
 form
 {
 	display: inline-flex;
-	padding-left: 25%;
+	width: 80%;
+	margin-left: 10%;
 	padding-bottom: 1em;
 }
 
@@ -48,7 +47,6 @@ img
 #affichage-photos
 {
 	display: inline-flex;
-	border: 1px black solid;
 	margin-left: 0;
 }
 

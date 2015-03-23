@@ -67,7 +67,7 @@ $(document).ready(function()
 		var pages = $("#pages");
 		
 		affichagePhotos.html("");
-		pages.html("");
+		pages.html("Pages : ");
 		
 		nbResultats = $("#nb-resultats").val();
 	
