@@ -1,3 +1,19 @@
+function afficherModal(texte)
+{
+	var modal = $("#modal");
+	modal.html('<span id="modal-close">&#215;</span><h1>' + texte + '</h1>');
+
+	$("#modal-close").on("click", function()
+	{
+		$("#modal").hide();
+		$('#modalbg').hide();
+	});
+
+	modal.show();
+	$('#modalbg').show();
+}
+
+
 $(document).ready(function()
 {
 	$("#commune").autocomplete(
@@ -45,7 +61,9 @@ $(document).ready(function()
 	   			{
 				   	$.each(data.items, function(i, item)
 				   	{
-					   	affichagePhotos.append('<img src="' + item.media.m + '"/><br/>');
+				   		var detail = "Nom de la photo : " + item.title + "<br/>Date de prise de vue : " + item.date_taken + "<br/>Identifiant du photographe : " + item.author;
+				   		
+					   	affichagePhotos.append('<img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/>');
 					   	if (i == nbResultats-1) return false;
 				   	});
 			   	}
@@ -56,20 +74,4 @@ $(document).ready(function()
 		else
 			afficherModal("Erreur : nombre de résultats demandé invalide");
 	});
-	
-	
-	function afficherModal(texte)
-	{
-		var modal = $("#modal");
-		modal.html('<span id="modal-close">&#215;</span><h1>' + texte + '</h1>');
-	
-		$("#modal-close").on("click", function()
-		{
-			$("#modal").hide();
-			$('#modalbg').hide();
-		});
-	
-		modal.show();
-		$('#modalbg').show();
-	}
 });

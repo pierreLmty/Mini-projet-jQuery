@@ -45,7 +45,9 @@ $(document).ready(function()
 	   			{
 				   	$.each(data.items, function(i, item)
 				   	{
-					   	affichagePhotos.append('<img src="' + item.media.m + '"/><br/>');
+				   		var detail = "Nom de la photo : " + item.title + "<br/>Date de prise de vue : " + item.date_taken + "<br/>Identifiant du photographe : " + item.author;
+				   		
+					   	affichagePhotos.append('<img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/>');
 					   	if (i == nbResultats-1) return false;
 				   	});
 			   	}
@@ -65,7 +67,6 @@ $(document).ready(function()
 	
 		$("#modal-close").on("click", function()
 		{
-			alert("test");
 			$("#modal").hide();
 			$('#modalbg').hide();
 		});
