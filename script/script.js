@@ -64,7 +64,10 @@ $(document).ready(function()
 		event.preventDefault();
 	
 		var affichagePhotos = $("#affichage-photos");
+		var pages = $("#pages");
+		
 		affichagePhotos.html("");
+		pages.html("");
 		
 		nbResultats = $("#nb-resultats").val();
 	
@@ -73,9 +76,7 @@ $(document).ready(function()
 			$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=" + $("#commune").val() + "&tagmode=any&format=json&jsoncallback=?", function(data)
 	   		{
 	   			if(data.items.length > 0)
-	   			{
-	   		   		var pages = [];
-	   		   		
+	   			{	   		   		
 				   	$.each(data.items, function(i, item)
 				   	{
 				   		var detail = "Nom de la photo : " + item.title + "<br/>Date de prise de vue : " + item.date_taken + "<br/>Identifiant du photographe : " + item.author;
@@ -88,21 +89,14 @@ $(document).ready(function()
 					   	if(i % IMAGES_PAR_PAGE == 0)
 					   	{
 					   		numPage = (i / IMAGES_PAR_PAGE) + 1;
-					   		pages.push('<a href="#" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
+					   		pages.append('<a href="#" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
+					   		
+					   		if(numPage < (nbResultats / IMAGES_PAR_PAGE))
+					   			pages.append(" - ");
 					   	}
 					   		
 					   	if(i == nbResultats-1)
-					   	{
-					   		affichagePhotos.append("Pages : ");
-					   		
-					   		$.each(pages, function(i)
-					   		{
-					   			affichagePhotos.append(pages[i]);
-					   			
-					   			if(i + 1 < pages.length)
-					   				affichagePhotos.append(" - ");
-					   		});
-					   	
+					   	{					   	
 					   		return false;
 					   	}
 				   	});
