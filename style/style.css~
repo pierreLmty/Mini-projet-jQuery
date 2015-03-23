@@ -4,12 +4,14 @@ body
 	font-family: Arial, Helvetica, sans-serif, bold;
 	margin : auto;
 	padding-top: 30%;
-	padding-left: 30%;
+	
 }
 
 form
 {
 	display: inline-flex;
+	padding-left: 25%;
+	padding-bottom: 1em;
 }
 
 input
@@ -18,7 +20,7 @@ input
 	margin-right: 1em;
 	height: 40px;
 	font-size: 26px;
-	transition: width 2s, height 4s;
+	transition: 2s;
 	box-shadow: inset rgba(0,0,0,0.35) 2px 2px 12px;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -27,15 +29,27 @@ input
 
 input:focus
 { 
-    outline: 0;
-    box-shadow: inset rgba(0,0,0,0.35) 2px 2px 12px, #0B8CB8 0 0 10px;
-    border: 1px solid #0B8CB8;
-    transition: 1s;
+	outline: 0;
+   	box-shadow: inset rgba(0,0,0,0.35) 2px 2px 12px, #0B8CB8 0 0 10px;
+   	border: 1px solid #0B8CB8;
+   	transition: 1s;
 }
 
 input:hover
 {
 	border: 1px solid #999	
+}
+
+img
+{
+	padding-right: 10px;
+}
+
+#affichage-photos
+{
+	display: inline-flex;
+	border: 1px black solid;
+	margin-left: 0;
 }
 
 #commune
