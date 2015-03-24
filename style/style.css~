@@ -8,8 +8,13 @@ body
 form
 {
 	display: inline-flex;
+   	margin-top:10%;
+   	margin-left:30%;
+   	
+   	
 	width: 80%;
-	margin-left: 10%;
+	/*margin-left: 10%;
+	margin-top: 20%;*/
 	padding-bottom: 1em;
 }
 
@@ -19,7 +24,7 @@ input
 	margin-right: 1em;
 	height: 40px;
 	font-size: 26px;
-	transition: 2s;
+	transition: 1500ms;
 	box-shadow: inset rgba(0,0,0,0.35) 2px 2px 12px;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -48,6 +53,7 @@ img
 {
 	display: inline-flex;
 	margin-left: 0;
+	text-align: center;
 }
 
 #commune
@@ -64,4 +70,54 @@ img
 {
 	transition: 1s;
 	width:300px;
+}
+
+#modal
+{
+	width: 40%;
+	height: 35%;
+	position: fixed;
+	background-color: #DCDCDC;
+	display: none;
+	top: 25%;
+	left: 25%;
+	z-index: 100;
+	padding: 20px;
+	-moz-box-shadow: 0px 0px 20px 10px #656565;
+	-webkit-box-shadow: 0px 0px 20px 10px #656565;
+	-o-box-shadow: 0px 0px 20px 10px #656565;
+	box-shadow: 0px 0px 20px 10px #656565;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#modalbg
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 99;
+	display: none;
+}
+
+#modal-close{
+	font-size: 1em;
+	cursor: pointer;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+#modal-close:hover
+{
+	font-weight: bold;
+}
+
+#pages
+{
+	text-align: center;
 }
