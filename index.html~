@@ -15,13 +15,14 @@
 		<form id="formulaire-recherche">
 			<input id="commune" type="text" name="commune" placeholder="Entrer le nom d'une commune"/><br/>
 			<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/><br/>
-			<input type="submit" value="Va chercher toutou!"/>
+			<input type="submit" value="Rechercher"/>
 		</form>
 		
-		<div id="modal"></div>
-      		<div id="modalbg"></div>
+		<div data-role="popup" id="modal"></div>
+      		<div data-role="popup" id="modalbg"></div>
 		
 		<div id="affichage-photos"></div>
+		<div id="pages"></div>
 	
 	</body>
 	
