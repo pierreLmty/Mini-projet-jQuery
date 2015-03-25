@@ -43,6 +43,7 @@ img
 {
 	padding-left: 15px;
 	padding-right: 15px;
+	padding-top: 15px;
 	-webkit-transition: all 0.7s ease;
 	transition: all 0.7s ease;
 }
@@ -62,7 +63,7 @@ img:hover
 
 #commune
 {
-	width: 400px;
+	width: 370px;
 }
 
 #nb-resultats
@@ -73,7 +74,12 @@ img:hover
 #nb-resultats:focus
 {
 	transition: 1s;
-	width:300px;
+	width:265px;
+}
+
+#recherche
+{
+	height: 43px;
 }
 
 #modal
@@ -126,8 +132,3 @@ img:hover
 	margin-top: 2em;
 	text-align: center;
 }
-
-img.clicked{
-	transition: 1s;
-    -webkit-transition:1s; // you don't need to specify this again
- }
