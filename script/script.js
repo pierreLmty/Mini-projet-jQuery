@@ -28,6 +28,20 @@ function afficherPage(numPage)
 	}
 }
 
+function escapeHtml(text)
+{
+	var map =
+	{
+	    '&': '&amp;',
+	    '<': '&lt;',
+	    '>': '&gt;',
+	    '"': '&quot;',
+	    "'": '&#039;'
+	};
+
+	return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
 
 $(document).ready(function()
 {
@@ -69,17 +83,22 @@ $(document).ready(function()
 		affichagePhotos.html("");
 		pages.html("Pages : ");
 		
-		nbResultats = $("#nb-resultats").val();
+		var nbResultatsDemande = $("#nb-resultats").val();
 	
-		if(!isNaN(nbResultats) && nbResultats > 0)
+		if(!isNaN(nbResultatsDemande) && nbResultatsDemande > 0)
 		{
 			$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=" + $("#commune").val() + "&tagmode=any&format=json&jsoncallback=?", function(data)
-	   		{
+	   		{	 
+	   			if(data.items.length > nbResultatsDemande)
+	   				nbResultats = nbResultatsDemande;
+	   			else
+	   				nbResultats = data.items.length;
+	   		  		
 	   			if(data.items.length > 0)
-	   			{	   		   		
+	   			{
 				   	$.each(data.items, function(i, item)
 				   	{
-				   		var detail = "Nom de la photo : " + item.title + "<br/>Date de prise de vue : " + item.date_taken + "<br/>Identifiant du photographe : " + item.author;
+				   		var detail = "Nom de la photo : " + escapeHtml(item.title) + "<br/>Date de prise de vue : " + escapeHtml(item.date_taken) + "<br/>Identifiant du photographe : " + escapeHtml(item.author);
 				   		
 						affichagePhotos.append('<span id="image' + i + '"><img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/></span>');
 						
