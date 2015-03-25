@@ -15,11 +15,15 @@
 		<form id="formulaire-recherche">
 			<input id="commune" type="text" name="commune" placeholder="Entrer le nom d'une commune"/><br/>
 			<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/><br/>
-			<input type="submit" value="Rechercher"/>
+			<input id="recherche" type="submit" value="Rechercher"/>
 		</form>
 		
+		<div id="tri">
+			Trier par : <input type="button" id="tri-date" value="date"/><input type="button" id="tri-nom" value="nom"/><input type="button" id="tri-photographe" value="photographe"/>
+		</div>
+		
 		<div id="modal"></div>
-      		<div id="modalbg"></div>
+      	<div id="modalbg"></div>
 		
 		<div id="affichage-photos"></div>
 		<div id="pages"></div>

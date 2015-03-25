@@ -1,7 +1,6 @@
 const IMAGES_PAR_PAGE = 5;
 var nbResultats = 0;
 
-
 function afficherModal(texte)
 {
 	var modal = $("#modal");
@@ -17,6 +16,7 @@ function afficherModal(texte)
 	$('#modalbg').show();
 }
 
+
 function afficherPage(numPage)
 {
 	for(var i = 0 ; i < nbResultats ; i++)
@@ -28,19 +28,12 @@ function afficherPage(numPage)
 	}
 }
 
+
 function escapeHtml(text)
 {
-	var map =
-	{
-	    '&': '&amp;',
-	    '<': '&lt;',
-	    '>': '&gt;',
-	    '"': '&quot;',
-	    "'": '&#039;'
-	};
-
-	return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+	return text.replace(/["']/g, "");
 }
+
 
 
 $(document).ready(function()
@@ -98,6 +91,8 @@ $(document).ready(function()
 	   			{
 				   	$.each(data.items, function(i, item)
 				   	{
+				   		// trier en fonction de $("#tri").find(":selected").text()
+				   	
 				   		var detail = "Nom de la photo : " + escapeHtml(item.title) + "<br/>Date de prise de vue : " + escapeHtml(item.date_taken) + "<br/>Identifiant du photographe : " + escapeHtml(item.author);
 				   		
 						affichagePhotos.append('<span id="image' + i + '"><img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/></span>');
@@ -115,9 +110,7 @@ $(document).ready(function()
 					   	}
 					   		
 					   	if(i == nbResultats-1)
-					   	{					   	
 					   		return false;
-					   	}
 				   	});
 			   	}
 			   	else
