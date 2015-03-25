@@ -64,27 +64,26 @@ img:hover
 
 #commune
 {
-	width: 370px;
+	min-width: 370px;
 }
 
 #nb-resultats
 {
 	width: 50px;
+	min-width: 50px;
 }
 
 #nb-resultats:focus
 {
 	transition: 1s;
 	width:265px;
-	@form
-	{
-		margin-left:10%;
-	}
 }
 
 #recherche
 {
 	height: 43px;
+	width: 140px;
+	min-width: 140px;
 }
 
 #modal
