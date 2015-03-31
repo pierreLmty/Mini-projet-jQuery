@@ -6,7 +6,7 @@
 		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.ui/1.11.4/jquery-ui.js"></script>
 		<link rel="Stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" />
 		<script type="text/javascript" src="script/script.js"></script>
-    	<link rel="stylesheet" type="text/css" href="style/style.css"/>
+    		<link rel="stylesheet" type="text/css" href="style/style.css"/>
 		<meta charset="utf-8"/>
 	</head>
 	
@@ -15,16 +15,14 @@
 		<form id="formulaire-recherche">
 			<input id="commune" type="text" name="commune" placeholder="Entrer le nom d'une commune"/><br/>
 			<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/><br/>
+			<select id="tri">
+				<option selected>Aucun tri</option>
+				<option>Date</option>
+				<option>Nom</option>
+				<option>Photographe</option>
+			</select>
 			<input id="recherche" type="submit" value="Rechercher"/>
 		</form>
-		
-		Trier par :
-		<select id="tri">
-			 <option>Aucun tri</option>
-			 <option>Date</option>
-			 <option>Nom</option>
-			 <option>Photographe</option>
-		</select>
 		
 		<div id="modal"></div>
       	<div id="modalbg"></div>

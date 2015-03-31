@@ -8,8 +8,8 @@ form
 {
 	display: inline-flex;
    	margin-top:10%;
-   	margin-left:30%;
-	width: 61%;
+   	margin-left:13%;
+	width: 75%;
 	padding-bottom: 2em;
 }
 
@@ -77,6 +77,13 @@ img:hover
 {
 	transition: 1s;
 	width:265px;
+}
+
+#tri
+{
+	margin-right: 1em;
+	font-size: 26px;
+	min-width: 180px;
 }
 
 #recherche
