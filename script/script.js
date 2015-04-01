@@ -26,6 +26,14 @@ function afficherPage(numPage)
 		else
 			$("#image" + i).hide();
 	}
+	
+	for(var i = 1 ; i <= nbResultats / IMAGES_PAR_PAGE ; i++)
+	{
+		if(i != numPage)
+			$("#page" + i).replaceWith('<a href="#" id="page' + i + '" onclick="afficherPage(' + i + ');">' + i + '</a>');
+		else
+			$("#page" + numPage).replaceWith('<span id="page' + numPage + '">' + numPage + '</span>');
+	}
 }
 
 
@@ -89,8 +97,9 @@ $(document).ready(function()
 	   		  		
 	   			if(data.items.length > 0)
 	   			{
+	   			
+		   			// tri si besoin
 	   				var tri = $("#tri").find(":selected").val();
-	   				
 	   				if(tri == 1)
 	   				{
 		   				data.items = data.items.sort(function(a, b)
@@ -125,7 +134,10 @@ $(document).ready(function()
 					   	if(i % IMAGES_PAR_PAGE == 0)
 					   	{
 					   		numPage = (i / IMAGES_PAR_PAGE) + 1;
-					   		pages.append('<a href="#" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
+					   		if(numPage != 1)
+						   		pages.append('<a href="#" id="page' + numPage + '" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
+						   	else
+						   		pages.append('<span id="page' + numPage + '">' + numPage + '</span>');
 					   		
 					   		if(numPage < (nbResultats / IMAGES_PAR_PAGE))
 					   			pages.append(" - ");
