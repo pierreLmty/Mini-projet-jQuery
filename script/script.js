@@ -43,9 +43,20 @@ function escapeHtml(text)
 }
 
 
+function parseDate(date)
+{
+	var mja = date.split("/");
+	return mja[2] + "-" + mja[0] + "-" + mja[1] + "T00:00:00-00:00";
+}
+
+
 
 $(document).ready(function()
 {
+	// calendrier
+	$("#datepicker").datepicker();
+
+	// autocomplétion
 	$("#commune").autocomplete(
 	{
 		source: function(requete, reponse)
@@ -80,9 +91,15 @@ $(document).ready(function()
 	
 		var affichagePhotos = $("#affichage-photos");
 		var pages = $("#pages");
+		var typeAffichage = $("#affichage").find(":selected").val();
 		
 		affichagePhotos.html("");
-		pages.html("Pages : ");
+		
+		
+		if(typeAffichage == 1)
+			pages.html("Pages : ");
+		else
+			pages.html("");
 		
 		var nbResultatsDemande = $("#nb-resultats").val();
 	
@@ -96,8 +113,7 @@ $(document).ready(function()
 	   				nbResultats = data.items.length;
 	   		  		
 	   			if(data.items.length > 0)
-	   			{
-	   			
+	   			{	   			
 		   			// tri si besoin
 	   				var tri = $("#tri").find(":selected").val();
 	   				if(tri == 1)
@@ -121,30 +137,43 @@ $(document).ready(function()
 		   					return (a["author"] > b["author"]) ? 1 : ((a["author"] < b["author"]) ? -1 : 0);
 		   				});
 	   				}
+	   				
+	   				
+	   				var date = $("#datepicker").val();
+	   				if(date != "")
+	   					date = parseDate(date);
 	   			
+	   			
+	   				// affichage des photos et des pages si besoin
 				   	$.each(data.items, function(i, item)
-				   	{			   
-				   		var detail = "Nom de la photo : " + escapeHtml(item.title) + "<br/>Date de prise de vue : " + escapeHtml(item.date_taken) + "<br/>Identifiant du photographe : " + escapeHtml(item.author);
-				   		
-						affichagePhotos.append('<span id="image' + i + '"><img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/></span>');
+				   	{
+				   		if((date != "" && date < item.date_taken) || date == "")
+				   		{
+					   		var detail = "Nom de la photo : " + escapeHtml(item.title) + "<br/>Date de prise de vue : " + escapeHtml(item.date_taken) + "<br/>Identifiant du photographe : " + escapeHtml(item.author);
+					   		
+							affichagePhotos.append('<span id="image' + i + '"><img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/></span>');
 						
-				   		if(i >= IMAGES_PAR_PAGE)
-				   			$("#image" + i).hide();
-					   	
-					   	if(i % IMAGES_PAR_PAGE == 0)
-					   	{
-					   		numPage = (i / IMAGES_PAR_PAGE) + 1;
-					   		if(numPage != 1)
-						   		pages.append('<a href="#" id="page' + numPage + '" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
-						   	else
-						   		pages.append('<span id="page' + numPage + '">' + numPage + '</span>');
-					   		
-					   		if(numPage < (nbResultats / IMAGES_PAR_PAGE))
-					   			pages.append(" - ");
+							if(typeAffichage == 1)
+							{
+						   		if(i >= IMAGES_PAR_PAGE)
+						   			$("#image" + i).hide();
+							   	
+							   	if(i % IMAGES_PAR_PAGE == 0)
+							   	{
+							   		numPage = (i / IMAGES_PAR_PAGE) + 1;
+							   		if(numPage != 1)
+								   		pages.append('<a href="#" id="page' + numPage + '" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
+								   	else
+								   		pages.append('<span id="page' + numPage + '">' + numPage + '</span>');
+							   		
+							   		if(numPage < (nbResultats / IMAGES_PAR_PAGE))
+							   			pages.append(" - ");
+							   	}
+						   	}
+						   		
+						   	if(i == nbResultats-1)
+						   		return false;
 					   	}
-					   		
-					   	if(i == nbResultats-1)
-					   		return false;
 				   	});
 			   	}
 			   	else

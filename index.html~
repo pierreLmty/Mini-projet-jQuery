@@ -6,7 +6,7 @@
 		<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.ui/1.11.4/jquery-ui.js"></script>
 		<link rel="Stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" />
 		<script type="text/javascript" src="script/script.js"></script>
-    		<link rel="stylesheet" type="text/css" href="style/style.css"/>
+    	<link rel="stylesheet" type="text/css" href="style/style.css"/>
 		<meta charset="utf-8"/>
 	</head>
 	
@@ -20,15 +20,17 @@
 				<option value="1">Date</option>
 				<option value="2">Nom</option>
 				<option value="3">Photographe</option>
-<!---->
+
 			</select>
 			<label>Affichage : </label>
 			<select id="affichage">
 				<option selected value="0">Tout</option>
 				<option value="1">Page par page</option>
 				<option value="2">Carousel</option>
-<!---->
 			</select>
+			
+			<input type="date" name="date" id="date"/>
+			
 			<input id="recherche" type="submit" value="Rechercher"/>
 		</form>
 		
