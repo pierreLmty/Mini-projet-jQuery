@@ -1,5 +1,6 @@
 const IMAGES_PAR_PAGE = 5;
 var nbResultats = 0;
+var jcarousel = null;
 
 function afficherModal(texte)
 {
@@ -93,9 +94,15 @@ $(document).ready(function()
 		var pages = $("#pages");
 		var typeAffichage = $("#affichage").find(":selected").val();
 		
+		
+		// affichage d'une liste pour le carousel ou effacement du contenu présent sinon
+		if(typeAffichage == 2)
+			var htmlCarousel = '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>';
+			
 		affichagePhotos.html("");
 		
 		
+		// affichage du numéro des pages ou effacement du contenu présent sinon
 		if(typeAffichage == 1)
 			pages.html("Pages : ");
 		else
@@ -151,7 +158,10 @@ $(document).ready(function()
 				   		{
 					   		var detail = "Nom de la photo : " + escapeHtml(item.title) + "<br/>Date de prise de vue : " + escapeHtml(item.date_taken) + "<br/>Identifiant du photographe : " + escapeHtml(item.author);
 					   		
-							affichagePhotos.append('<span id="image' + i + '"><img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/></span>');
+					   		if(typeAffichage == 2)
+					   			htmlCarousel += '<li><img width="600" height="400" src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/></li>';
+					   		else
+								affichagePhotos.append('<span id="image' + i + '"><img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/></span>');
 						
 							if(typeAffichage == 1)
 							{
@@ -175,6 +185,56 @@ $(document).ready(function()
 						   		return false;
 					   	}
 				   	});
+				   	
+				   	if(typeAffichage == 2)
+				   	{
+					   	affichagePhotos.html(htmlCarousel + '</ul></div><a href="#" class="jcarousel-control-prev">&lsaquo;</a><a href="#" class="jcarousel-control-next">&rsaquo;</a><p class="jcarousel-pagination"></p></div>');
+					   	// carousel
+	jcarousel = $('.jcarousel');
+	jcarousel
+            .on('jcarousel:reload jcarousel:create', function () {
+                var carousel = $(this),
+                    width = carousel.innerWidth();
+
+                if (width >= 600) {
+                    width = width / 3;
+                } else if (width >= 350) {
+                    width = width / 2;
+                }
+
+                carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
+            })
+            .jcarousel({
+                wrap: 'circular'
+            });
+
+        $('.jcarousel-control-prev')
+            .jcarouselControl({
+                target: '-=1'
+            });
+
+        $('.jcarousel-control-next')
+            .jcarouselControl({
+                target: '+=1'
+            });
+
+        $('.jcarousel-pagination')
+            .on('jcarouselpagination:active', 'a', function() {
+                $(this).addClass('active');
+            })
+            .on('jcarouselpagination:inactive', 'a', function() {
+                $(this).removeClass('active');
+            })
+            .on('click', function(e) {
+                e.preventDefault();
+            })
+            .jcarouselPagination({
+                perPage: 1,
+                item: function(page) {
+                    return '<a href="#' + page + '">' + page + '</a>';
+                }
+            });
+				   	}
 			   	}
 			   	else
 			   		afficherModal("Pas de résultat pour cette recherche");
