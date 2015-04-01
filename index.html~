@@ -16,8 +16,7 @@
 			<input id="commune" type="text" name="commune" placeholder="Entrer le nom d'une commune"/><br/>
 			<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/><br/>
 			<select id="tri">
-				<option>Trier par</option>
-				<option>Aucun tri</option>
+				<option selected>Aucun tri</option>
 				<option>Date</option>
 				<option>Nom</option>
 				<option>Photographe</option>

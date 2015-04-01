@@ -89,10 +89,32 @@ $(document).ready(function()
 	   		  		
 	   			if(data.items.length > 0)
 	   			{
+	   				var tri = $("#tri").find(":selected").val();
+	   				
+	   				if(tri == 1)
+	   				{
+		   				data.items = data.items.sort(function(a, b)
+		   				{
+		   					return (a["date_taken"] < b["date_taken"]) ? 1 : ((a["date_taken"] > b["date_taken"]) ? -1 : 0);
+		   				});
+	   				}
+	   				else if(tri == 2)
+	   				{
+	   					data.items = data.items.sort(function(a, b)
+		   				{
+		   					return (a["title"] > b["title"]) ? 1 : ((a["title"] < b["title"]) ? -1 : 0);
+		   				});
+	   				}
+	   				else if(tri == 3)
+	   				{
+	   					data.items = data.items.sort(function(a, b)
+		   				{
+		   					return (a["author"] > b["author"]) ? 1 : ((a["author"] < b["author"]) ? -1 : 0);
+		   				});
+	   				}
+	   			
 				   	$.each(data.items, function(i, item)
-				   	{
-				   		// trier en fonction de $("#tri").find(":selected").text()
-				   	
+				   	{			   
 				   		var detail = "Nom de la photo : " + escapeHtml(item.title) + "<br/>Date de prise de vue : " + escapeHtml(item.date_taken) + "<br/>Identifiant du photographe : " + escapeHtml(item.author);
 				   		
 						affichagePhotos.append('<span id="image' + i + '"><img src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/></span>');
