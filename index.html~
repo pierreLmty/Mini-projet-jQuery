@@ -13,14 +13,18 @@
 	<body>
 	
 		<form id="formulaire-recherche">
-			<input id="commune" type="text" name="commune" placeholder="Entrer le nom d'une commune"/><br/>
+			<input id="commune" type="text" name="commune" placeholder="Rechercher une commune"/><br/>
 			<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/><br/>
 			<select id="tri">
-				<option>Trier par</option>
-				<option>Aucun tri</option>
-				<option>Date</option>
-				<option>Nom</option>
-				<option>Photographe</option>
+				<option selected value="0">Aucun tri</option>
+				<option value="0">Date</option>
+				<option value="0">Nom</option>
+				<option value="0">Photographe</option>
+			</select>
+			<label>Affichage : </label>
+			<select id="affichage">
+				<option selected>Tout</option>
+				<option
 			</select>
 			<input id="recherche" type="submit" value="Rechercher"/>
 		</form>
