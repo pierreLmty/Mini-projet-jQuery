@@ -8,33 +8,36 @@
 		<link rel="Stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" />
 		<script type="text/javascript" src="script/script.js"></script>
 		<script type="text/javascript" src="script/fonctions.js"></script>
-    	<link rel="stylesheet" type="text/css" href="style/style.css"/>
-    	<link rel="stylesheet" type="text/css" href="style/jcarousel.css"/>
+    		<link rel="stylesheet" type="text/css" href="style/style.css"/>
+    		<link rel="stylesheet" type="text/css" href="style/jcarousel.css"/>
 		<meta charset="utf-8"/>
 	</head>
 	
 	<body>
-	
 		<form id="formulaire-recherche">
-			<input id="commune" type="text" name="commune" placeholder="Rechercher une commune"/><br/>
-			<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/><br/>
-			<select id="tri">
-				<option selected value="0">Aucun tri</option>
-				<option value="1">Date</option>
-				<option value="2">Nom</option>
-				<option value="3">Photographe</option>
+			<div class="principal">
+				<input id="commune" type="text" name="commune" placeholder="Rechercher le nom d'une commune"/>
+				<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/>
+				<input id="recherche" type="submit" value="Rechercher"/>
+			</div><br/>
+			<div class="secondaire">
+				<select id="tri">
+					<option selected value="0">Aucun tri</option>
+					<option value="1">Date</option>
+					<option value="2">Nom</option>
+					<option value="3">Photographe</option>
 
-			</select>
-			<label>Affichage : </label>
-			<select id="affichage">
-				<option selected value="0">Tout</option>
-				<option value="1">Page par page</option>
-				<option value="2">Carousel</option>
-			</select>
+				</select>
+				
+				<select id="affichage">
+					<option selected value="0">Affichage</option>
+					<option value="1">Tout</option>
+					<option value="2">Page par page</option>
+					<option value="3">Carousel</option>
+				</select>
 			
-			<input type="text" id="datepicker">
-			
-			<input id="recherche" type="submit" value="Rechercher"/>
+				<input type="text" id="datepicker" placeholder="Date"/>
+			</div>
 		</form>
 		
 		<div id="modal"></div>
