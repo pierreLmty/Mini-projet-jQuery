@@ -8,6 +8,7 @@
 		<link rel="Stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" />
 		<script type="text/javascript" src="script/script.js"></script>
     	<link rel="stylesheet" type="text/css" href="style/style.css"/>
+    	<link rel="stylesheet" type="text/css" href="style/jcarousel.css"/>
 		<meta charset="utf-8"/>
 	</head>
 	

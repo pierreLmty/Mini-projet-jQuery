@@ -2,60 +2,12 @@ const IMAGES_PAR_PAGE = 5;
 var nbResultats = 0;
 var jcarousel = null;
 
-function afficherModal(texte)
-{
-	var modal = $("#modal");
-	modal.html('<span id="modal-close">&#215;</span><h1>' + texte + '</h1>');
-
-	$("#modal-close").on("click", function()
-	{
-		$("#modal").hide();
-		$('#modalbg').hide();
-	});
-
-	modal.show();
-	$('#modalbg').show();
-}
-
-
-function afficherPage(numPage)
-{
-	for(var i = 0 ; i < nbResultats ; i++)
-	{
-		if(i >= (numPage - 1) * IMAGES_PAR_PAGE && i < ((numPage - 1) * IMAGES_PAR_PAGE) + IMAGES_PAR_PAGE)
-			$("#image" + i).show();
-		else
-			$("#image" + i).hide();
-	}
-	
-	for(var i = 1 ; i <= nbResultats / IMAGES_PAR_PAGE ; i++)
-	{
-		if(i != numPage)
-			$("#page" + i).replaceWith('<a href="#" id="page' + i + '" onclick="afficherPage(' + i + ');">' + i + '</a>');
-		else
-			$("#page" + numPage).replaceWith('<span id="page' + numPage + '">' + numPage + '</span>');
-	}
-}
-
-
-function escapeHtml(text)
-{
-	return text.replace(/["']/g, "");
-}
-
-
-function parseDate(date)
-{
-	var mja = date.split("/");
-	return mja[2] + "-" + mja[0] + "-" + mja[1] + "T00:00:00-00:00";
-}
-
-
 
 $(document).ready(function()
 {
 	// calendrier
 	$("#datepicker").datepicker();
+	
 
 	// autocomplétion
 	$("#commune").autocomplete(
@@ -86,6 +38,8 @@ $(document).ready(function()
 		minLength: 3
 	});
 	
+	
+	// Évènement appelé lors d'une recherche
 	$("#formulaire-recherche").submit(function(event)
 	{
 		event.preventDefault();
@@ -112,6 +66,7 @@ $(document).ready(function()
 	
 		if(!isNaN(nbResultatsDemande) && nbResultatsDemande > 0)
 		{
+			// on récupère les résultats
 			$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=" + $("#commune").val() + "&tagmode=any&format=json&jsoncallback=?", function(data)
 	   		{	 
 	   			if(data.items.length > nbResultatsDemande)
@@ -146,12 +101,13 @@ $(document).ready(function()
 	   				}
 	   				
 	   				
+	   				// prise en compte de la date minimum de prise de vue
 	   				var date = $("#datepicker").val();
 	   				if(date != "")
 	   					date = parseDate(date);
 	   			
 	   			
-	   				// affichage des photos et des pages si besoin
+	   				// affichage des photos et éventuellement des pages (si demandé)
 				   	$.each(data.items, function(i, item)
 				   	{
 				   		if((date != "" && date < item.date_taken) || date == "")
@@ -189,51 +145,7 @@ $(document).ready(function()
 				   	if(typeAffichage == 2)
 				   	{
 					   	affichagePhotos.html(htmlCarousel + '</ul></div><a href="#" class="jcarousel-control-prev">&lsaquo;</a><a href="#" class="jcarousel-control-next">&rsaquo;</a><p class="jcarousel-pagination"></p></div>');
-					   	// carousel
-	jcarousel = $('.jcarousel');
-	jcarousel
-            .on('jcarousel:reload jcarousel:create', function () {
-                var carousel = $(this),
-                    width = carousel.innerWidth();
-
-                if (width >= 600) {
-                    width = width / 3;
-                } else if (width >= 350) {
-                    width = width / 2;
-                }
-
-                carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-            })
-            .jcarousel({
-                wrap: 'circular'
-            });
-
-        $('.jcarousel-control-prev')
-            .jcarouselControl({
-                target: '-=1'
-            });
-
-        $('.jcarousel-control-next')
-            .jcarouselControl({
-                target: '+=1'
-            });
-
-        $('.jcarousel-pagination')
-            .on('jcarouselpagination:active', 'a', function() {
-                $(this).addClass('active');
-            })
-            .on('jcarouselpagination:inactive', 'a', function() {
-                $(this).removeClass('active');
-            })
-            .on('click', function(e) {
-                e.preventDefault();
-            })
-            .jcarouselPagination({
-                perPage: 1,
-                item: function(page) {
-                    return '<a href="#' + page + '">' + page + '</a>';
-                }
-            });
+					   	actualiserCarousel();
 				   	}
 			   	}
 			   	else

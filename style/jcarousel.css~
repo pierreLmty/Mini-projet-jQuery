@@ -33,12 +33,19 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    height: 200px;
 }
 
 .jcarousel img {
     display: block;
     max-width: 100%;
     height: auto !important;
+    height: 100%;
+}
+
+.jcarousel img:hover {
+    -webkit-transform:scale(1);
+	transform:scale(1);
 }
 
 /** Carousel Controls **/
@@ -116,3 +123,7 @@
     box-shadow: 0 0 2px #F0EFE7;
 }
 
+li
+{
+	width: 200px;
+}

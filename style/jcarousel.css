@@ -39,6 +39,12 @@
     display: block;
     max-width: 100%;
     height: auto !important;
+    height: 100%;
+}
+
+.jcarousel img:hover {
+    -webkit-transform:scale(1);
+	transform:scale(1);
 }
 
 /** Carousel Controls **/
