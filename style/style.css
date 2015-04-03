@@ -30,7 +30,7 @@ form
    	padding-top:1em;
 	padding-bottom: 1em;
 	margin-bottom: 1em;
-	padding-left:10%;
+	padding-left:230px;
 	background-image: -webkit-linear-gradient(top, #dbdbdb -20%, #2c4d58 100%);
 	background-image:    -moz-linear-gradient(top, #dbdbdb -20%, #2c4d58 100%);
 	background-image:     -ms-linear-gradient(top, #dbdbdb -20%, #2c4d58 100%);
@@ -73,7 +73,7 @@ select
 	height: 30px;
 }
 
-img
+img.general
 {
 	padding-left: 15px;
 	padding-right: 15px;
@@ -83,7 +83,7 @@ img
 	transition: all 0.7s ease;
 }
 
-img:hover
+img.general:hover
 {
 	-webkit-transform:scale(1.2);
 	transform:scale(1.2);
@@ -91,7 +91,13 @@ img:hover
 
 #affichage-photos
 {
-	margin-left: 15%;	
+	margin-left: 15%;
+}
+
+#affichage-photos-carrousel
+{
+	margin-left: 230px;
+	margin-right: 230px;
 }
 
 #commune

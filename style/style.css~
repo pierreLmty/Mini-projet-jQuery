@@ -17,15 +17,12 @@ body
 div.principal
 {
 	display: inline-flex;
-	border: 1px solid blue;
 	margin-bottom: 10px;
 }
 
 div.secondaire
 {
 	display: inline-flex;
-	margin: 0 auto;
-	border: 1px solid red;
 }
 
 form
@@ -76,7 +73,7 @@ select
 	height: 30px;
 }
 
-img
+img.general
 {
 	padding-left: 15px;
 	padding-right: 15px;
@@ -86,7 +83,7 @@ img
 	transition: all 0.7s ease;
 }
 
-img:hover
+img.general:hover
 {
 	-webkit-transform:scale(1.2);
 	transform:scale(1.2);
@@ -94,7 +91,13 @@ img:hover
 
 #affichage-photos
 {
-	margin-left: 15%;	
+	margin-left: 15%;
+}
+
+#affichage-photos-carrousel
+{
+	margin-left: 230px;
+	margin-right: 230px;
 }
 
 #commune

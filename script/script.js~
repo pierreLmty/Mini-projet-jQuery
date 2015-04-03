@@ -45,6 +45,7 @@ $(document).ready(function()
 		event.preventDefault();
 	
 		var affichagePhotos = $("#affichage-photos");
+		var affichagePhotosCarrousel = $("#affichage-photos-carrousel");/**/
 		var pages = $("#pages");
 		var typeAffichage = $("#affichage").find(":selected").val();
 		
@@ -54,6 +55,7 @@ $(document).ready(function()
 			var htmlCarousel = '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>';
 			
 		affichagePhotos.html("");
+		affichagePhotosCarrousel.html("");/**/
 		
 		
 		// affichage du numéro des pages ou effacement du contenu présent sinon
@@ -107,7 +109,7 @@ $(document).ready(function()
 	   					date = parseDate(date);
 	   			
 	   			
-	   				// affichage des photos et des pages si besoin
+	   				// affichage des photos et éventuellement des pages (si demandé)
 				   	$.each(data.items, function(i, item)
 				   	{
 				   		if((date != "" && date < item.date_taken) || date == "")
@@ -144,7 +146,7 @@ $(document).ready(function()
 				   	
 				   	if(typeAffichage == 2)
 				   	{
-					   	affichagePhotos.html(htmlCarousel + '</ul></div><a href="#" class="jcarousel-control-prev">&lsaquo;</a><a href="#" class="jcarousel-control-next">&rsaquo;</a><p class="jcarousel-pagination"></p></div>');
+					   	affichagePhotosCarrousel.html(htmlCarousel + '</ul></div><a href="#" class="jcarousel-control-prev">&lsaquo;</a><a href="#" class="jcarousel-control-next">&rsaquo;</a><p class="jcarousel-pagination"></p></div>');/**/
 					   	actualiserCarousel();
 				   	}
 			   	}

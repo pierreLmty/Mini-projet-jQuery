@@ -16,7 +16,7 @@
 	<body>
 		<form id="formulaire-recherche">
 			<div class="principal">
-				<input id="commune" type="text" name="commune" placeholder="Rechercher le nom d'une commune"/>
+				<input id="commune" type="text" name="commune" placeholder="Rechercher une commune"/>
 				<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/>
 				<input id="recherche" type="submit" value="Rechercher"/>
 			</div><br/>
@@ -30,10 +30,10 @@
 				</select>
 				
 				<select id="affichage">
-					<option selected value="0">Affichage</option>
-					<option value="1">Tout</option>
-					<option value="2">Page par page</option>
-					<option value="3">Carousel</option>
+					<option selected">Affichage</option>
+					<option value="0">Tout</option>
+					<option value="1">Page par page</option>
+					<option value="2">Carrousel</option>
 				</select>
 			
 				<input type="text" id="datepicker" placeholder="Date"/>
@@ -44,6 +44,7 @@
       	<div id="modalbg"></div>
 		
 		<div id="affichage-photos"></div>
+		<div id="affichage-photos-carrousel"></div>
 		<div id="pages"></div>
 	
 	</body>
