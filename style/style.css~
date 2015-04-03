@@ -14,12 +14,6 @@ body
 	padding: 0;
 }
 
-div.logo
-{
-	float: left;
-	margin-rigth: 1em;
-}
-
 div.principal
 {
 	display: inline-flex;
@@ -104,12 +98,15 @@ img.carrousel
 #affichage-photos
 {
 	margin-left: 15%;
+	height: 0px;
 }
 
 #affichage-photos-carrousel
 {
 	margin-left: 230px;
-	margin-right: 230px;	
+	margin-right: 230px;
+	height: 0px;
+	
 }
 
 #commune
@@ -204,6 +201,7 @@ img.carrousel
 
 #pages
 {
+	margin-top: 2em;
 	text-align: center;
 	font-size: 1.5em;
 }
@@ -211,7 +209,6 @@ img.carrousel
 a
 {
 	text-decoration: none;
-	color: black;
 }
 
 a:visited
