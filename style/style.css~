@@ -30,7 +30,7 @@ form
    	padding-top:1em;
 	padding-bottom: 1em;
 	margin-bottom: 1em;
-	padding-left:10%;
+	padding-left:230px;
 	background-image: -webkit-linear-gradient(top, #dbdbdb -20%, #2c4d58 100%);
 	background-image:    -moz-linear-gradient(top, #dbdbdb -20%, #2c4d58 100%);
 	background-image:     -ms-linear-gradient(top, #dbdbdb -20%, #2c4d58 100%);
@@ -89,15 +89,24 @@ img.general:hover
 	transform:scale(1.2);
 }
 
+img.carrousel
+{
+	width: 100%;
+	height: 400px;
+}
+
 #affichage-photos
 {
 	margin-left: 15%;
+	height: 0px;
 }
 
 #affichage-photos-carrousel
 {
 	margin-left: 230px;
 	margin-right: 230px;
+	height: 0px;
+	
 }
 
 #commune

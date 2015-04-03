@@ -117,7 +117,7 @@ $(document).ready(function()
 					   		var detail = "Nom de la photo : " + escapeHtml(item.title) + "<br/>Date de prise de vue : " + escapeHtml(item.date_taken) + "<br/>Identifiant du photographe : " + escapeHtml(item.author);
 					   		
 					   		if(typeAffichage == 2)
-					   			htmlCarousel += '<li><img width="600" height="400" src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/></li>';
+					   			htmlCarousel += '<li><img class="carrousel" src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/></li>';
 					   		else
 								affichagePhotos.append('<span id="image' + i + '"><img class="general" src="' + item.media.m + '" onclick="afficherModal(\'' + detail + '\');"/><br/></span>');
 						

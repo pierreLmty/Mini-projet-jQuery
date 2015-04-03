@@ -89,15 +89,24 @@ img.general:hover
 	transform:scale(1.2);
 }
 
+img.carrousel
+{
+	width: 600px;
+	height: 400px;
+}
+
 #affichage-photos
 {
 	margin-left: 15%;
+	height: 0px;
 }
 
 #affichage-photos-carrousel
 {
 	margin-left: 230px;
 	margin-right: 230px;
+	height: 0px;
+	
 }
 
 #commune
