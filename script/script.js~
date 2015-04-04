@@ -132,7 +132,7 @@ $(document).ready(function()
 							   		if(numPage != 1)
 								   		pages.append('<a href="#" id="page' + numPage + '" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
 								   	else
-								   		pages.append('<span id="page' + numPage + '" class="page-courante">' + numPage + '</span>');
+								   		pages.append('<span id="page' + numPage + '">' + numPage + '</span>');
 							   		
 							   		if(numPage < (nbResultats / IMAGES_PAR_PAGE))
 							   			pages.append(" - ");

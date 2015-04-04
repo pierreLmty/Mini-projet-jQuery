@@ -8,16 +8,15 @@ html
 
 body
 {
-	background-color: #FFF;
 	font-family: Arial, Helvetica, sans-serif, bold;
 	margin: 0;
 	padding: 0;
+	text-align: center;
 }
 
 div.logo
 {
 	float: left;
-	margin-rigth: 1em;
 }
 
 div.principal
@@ -36,7 +35,6 @@ form
    	padding-top:1em;
 	padding-bottom: 1em;
 	margin-bottom: 1em;
-	padding-left:230px;
 	background-image: -webkit-linear-gradient(top, #dbdbdb -20%, #2c4d58 100%);
 	background-image:    -moz-linear-gradient(top, #dbdbdb -20%, #2c4d58 100%);
 	background-image:     -ms-linear-gradient(top, #dbdbdb -20%, #2c4d58 100%);
@@ -46,6 +44,13 @@ form
 	-webkit-box-shadow: 0px 10px 5px 0px #656565;
 	-o-box-shadow: 0px 10px 5px 0px #656565;
 	box-shadow: 0px 10px 10px 5px #656565;
+}
+
+.contenu-formulaire
+{
+	width: 960px;
+	margin: auto;
+	text-align: center;
 }
 
 input
@@ -110,21 +115,9 @@ img.general:hover
 	transform:scale(1.2);
 }
 
-img.carrousel
-{
-	width: 600px;
-	height: 400px;
-}
-
 #affichage-photos
 {
-	margin-left: 15%;
-}
-
-#affichage-photos-carrousel
-{
-	margin-left: 230px;
-	margin-right: 230px;	
+	margin: auto;
 }
 
 #commune
@@ -174,7 +167,7 @@ img.carrousel
 
 #modal
 {
-	width: 40%;
+	width: 50%;
 	height: 35%;
 	position: fixed;
 	background-color: #DCDCDC;
@@ -221,12 +214,24 @@ img.carrousel
 {
 	text-align: center;
 	font-size: 1.5em;
+	padding: 20px;
 }
 
 a
 {
 	text-decoration: none;
 	color: black;
+}
+
+a:hover
+{
+	color: #ccd0d1;
+}
+
+.page-courante
+{
+	background-color: #ccd0d1;
+	padding: 3px;
 }
 
 a:visited
