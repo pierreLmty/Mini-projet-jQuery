@@ -1,4 +1,8 @@
+/////////////////////////////////////////////////
+//
 // Fonctions appelées par le script principal
+//
+/////////////////////////////////////////////////
 
 
 // Affiche une fenêtre modale contenant le texte passé en paramètre
@@ -70,8 +74,12 @@ function actualiserCarousel()
                 {
 	                imageHeight = $(this).css('height').substr(0, $(this).css('height').length - 2);
 	                
-                	if(imageHeight < height)
-		                $(this).css('margin-top', (height - imageHeight) / 2 + 'px');
+		            $(this).css(
+		            {
+		            	'padding-top' : (height - imageHeight) / 2 + 'px',
+		            	'padding-bottom' : (height - imageHeight) / 2 + 'px',
+		            	'background-color: white;
+		            });
                 });
             })
             .jcarousel({

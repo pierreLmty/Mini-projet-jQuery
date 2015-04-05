@@ -1,3 +1,10 @@
+///////////////////////////////////////////////////////////////
+//
+// Script principal qui gère les évènements
+//
+///////////////////////////////////////////////////////////////
+
+
 const IMAGES_PAR_PAGE = 5;
 var nbResultats = 0;
 var jcarousel = null;
@@ -45,7 +52,7 @@ $(document).ready(function()
 		event.preventDefault();
 	
 		var affichagePhotos = $("#affichage-photos");
-		var affichagePhotosCarrousel = $("#affichage-photos-carrousel");/**/
+		var affichagePhotosCarrousel = $("#affichage-photos-carrousel");
 		var pages = $("#pages");
 		var typeAffichage = $("#affichage").find(":selected").val();
 		
@@ -55,7 +62,7 @@ $(document).ready(function()
 			var htmlCarousel = '<div class="jcarousel-wrapper"><div class="jcarousel"><ul>';
 			
 		affichagePhotos.html("");
-		affichagePhotosCarrousel.html("");/**/
+		affichagePhotosCarrousel.html("");
 		
 		
 		// affichage du numéro des pages ou effacement du contenu présent sinon
@@ -70,11 +77,13 @@ $(document).ready(function()
 		{
 			// on récupère les résultats
 			$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=" + $("#commune").val() + "&tagmode=any&format=json&jsoncallback=?", function(data)
-	   		{	 
+	   		{
+	   			// sauvegarde du nombre de résultats pour des traitements futurs
 	   			if(data.items.length > nbResultatsDemande)
 	   				nbResultats = nbResultatsDemande;
 	   			else
 	   				nbResultats = data.items.length;
+	   				
 	   		  		
 	   			if(data.items.length > 0)
 	   			{	   			
@@ -132,7 +141,7 @@ $(document).ready(function()
 							   		if(numPage != 1)
 								   		pages.append('<a href="#" id="page' + numPage + '" onclick="afficherPage(' + numPage + ');">' + numPage + '</a>');
 								   	else
-								   		pages.append('<span id="page' + numPage + '">' + numPage + '</span>');
+								   		pages.append('<span id="page' + numPage + '" class="page-courante">' + numPage + '</span>');
 							   		
 							   		if(numPage < (nbResultats / IMAGES_PAR_PAGE))
 							   			pages.append(" - ");
@@ -144,6 +153,7 @@ $(document).ready(function()
 					   	}
 				   	});
 				   	
+				   	// Affichage du carrousel
 				   	if(typeAffichage == 2)
 				   	{
 					   	affichagePhotosCarrousel.html(htmlCarousel + '</ul></div><a href="#" class="jcarousel-control-prev">&lsaquo;</a><a href="#" class="jcarousel-control-next">&rsaquo;</a><p class="jcarousel-pagination"></p></div>');/**/

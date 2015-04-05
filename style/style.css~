@@ -101,10 +101,7 @@ li.ui-menu-item
 
 img.general
 {
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding: 15px;
 	-webkit-transition: all 0.7s ease;
 	transition: all 0.7s ease;
 }
@@ -242,4 +239,9 @@ a:visited
 label
 {
 	font-size: 26px;
+}
+
+.jcarrousel-wrapper
+{
+	background-color: white;
 }
