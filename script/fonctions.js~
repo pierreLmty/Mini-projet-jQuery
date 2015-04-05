@@ -78,7 +78,7 @@ function actualiserCarousel()
 		            {
 		            	'padding-top' : (height - imageHeight) / 2 + 'px',
 		            	'padding-bottom' : (height - imageHeight) / 2 + 'px',
-		            	'background-color: white;
+		            	'background-color' : 'white'
 		            });
                 });
             })

@@ -50,7 +50,7 @@ function escapeHtml(text)
 }
 
 
-// Change le format de la date MM/DD/AAAA -> AAAA-MM-DDT00:00:00-00:00
+// Change le format de la date MM/JJ/AAAA -> AAAA-MM-JJT00:00:00-00:00
 function parseDate(date)
 {
 	var mja = date.split("/");

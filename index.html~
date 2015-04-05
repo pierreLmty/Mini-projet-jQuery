@@ -15,29 +15,31 @@
 	
 	<body>
 		<form id="formulaire-recherche">
-			<div class="logo"><a href="http://www.lycos.com" target=_blanck><img src="style/lycos.png" width="70" height="70" alt="logo lycos"/></a></div>
-			<div class="principal">
-				<input id="commune" type="text" name="commune" placeholder="Rechercher une commune"/>
-				<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/>
-				<input id="recherche" type="submit" value="Rechercher"/>
-			</div><br/>
-			<div class="secondaire">
-				<select id="tri">
-					<option selected value="0">Aucun tri</option>
-					<option value="1">Date</option>
-					<option value="2">Nom</option>
-					<option value="3">Photographe</option>
+			<div class="contenu-formulaire">
+				<div class="logo"><a href="http://www.lycos.com" target=_blanck><img src="img/lycos.png" width="70" height="70" alt="logo lycos"/></a></div>
+				<div class="principal">
+					<input id="commune" type="text" name="commune" placeholder="Rechercher une commune"/>
+					<input id="nb-resultats" type="number" name="nb-resultats" min="1" placeholder="Nombre de résultats"/>
+					<input id="recherche" type="submit" src="img/recherche.png"/>
+				</div><br/>
+				<div class="secondaire">
+					<select id="tri">
+						<option selected value="0">Aucun tri</option>
+						<option value="1">Date</option>
+						<option value="2">Nom</option>
+						<option value="3">Photographe</option>
 
-				</select>
+					</select>
 				
-				<select id="affichage">
-					<option selected">Affichage</option>
-					<option value="0">Tout</option>
-					<option value="1">Page par page</option>
-					<option value="2">Carrousel</option>
-				</select>
+					<select id="affichage">
+						<option selected">Affichage</option>
+						<option value="0">Tout</option>
+						<option value="1">Page par page</option>
+						<option value="2">Carrousel</option>
+					</select>
 			
-				<input type="text" id="datepicker" placeholder="Date"/>
+					<input type="text" id="datepicker" placeholder="Date"/>
+				</div>
 			</div>
 		</form>
 		
